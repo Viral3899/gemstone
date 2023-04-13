@@ -2,7 +2,7 @@ import os
 import logging
 from datetime import datetime
 
-from src.util import get_current_time_stamp
+from src.utils.util import get_current_time_stamp
 
 
 
