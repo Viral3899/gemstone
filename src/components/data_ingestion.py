@@ -68,4 +68,4 @@ class DataIngestion:
 if __name__ == "__main__":
     obj = DataIngestion()
     train_path,test_path = obj.initiate_data_ingestion()
-    DataTransformation().initaite_data_transformation(train_path=train_path,test_path=test_path)
+    DataTransformation().initiate_data_transformation(train_path=train_path,test_path=test_path)

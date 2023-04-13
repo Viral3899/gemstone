@@ -28,9 +28,11 @@ class DataTransformationConfig:
 class DataTransformation:
     def __init__(self):
         self.data_transformation_config = DataTransformationConfig()
+        
 
     def get_data_transformation_object(self):
         try:
+            print(self.data_transformation_config.preprocessing_obj_file_path)
             logging.info(
                 f"\n\n{'='*20} Data Transformation Started {'='*20}\n\n")
             # Define which columns should be ordinal-encoded and which should be scaled
@@ -68,7 +70,7 @@ class DataTransformation:
             logging.info(f"Error Occurred at {CustomException(e,sys)}")
             raise CustomException(e, sys)
 
-    def initaite_data_transformation(self, train_path, test_path):
+    def initiate_data_transformation(self, train_path, test_path):
         try:
             # Reading train and test data
             train_df = pd.read_csv(train_path)
@@ -109,14 +111,14 @@ class DataTransformation:
             save_numpy_array_data(
                 file_path=self.data_transformation_config.preprocessed_test_file_path, array=test_arr)
             logging.info('Preprocessed Data saved')
-            save_object(file_path=self.data_transformation_config,
+            save_object(file_path=self.data_transformation_config.preprocessing_obj_file_path,
                         obj=preprocessing_obj)
             logging.info('Preprocessor pickle file saved')
             
             return (
                 train_arr,
                 test_arr,
-                self.data_transformation_config.preprocessor_obj_file_path,
+                self.data_transformation_config.preprocessing_obj_file_path,
             )
         except Exception as e:
             logging.info(f"Error Occurred at {CustomException(e,sys)}")
